@@ -28,10 +28,12 @@ class Stack:
     def pop(self):
         if not self.top:
             return None
-        pop_item = self.top.value
+        pop_item = self.top
         self.top = self.top.next
         self.length -= 1
-        return pop_item
+        if not self.top:
+            self.bottom = None
+        return pop_item.value
 
     def isempty(self):
         return self.top is None
@@ -56,6 +58,7 @@ if __name__ == "__main__":
     my_stack.push('facebook')
     my_stack.push('udemy')
     my_stack.push('xiaomi')
+    my_stack.pop()
     my_stack.pop()
     my_stack.pop()
     my_stack.pop()
